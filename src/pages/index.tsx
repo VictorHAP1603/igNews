@@ -1,13 +1,13 @@
 import { GetStaticProps } from "next";
+
 import Head from "next/Head";
+import Image from "next/image";
+import AvatarImg from "../assets/images/avatar.svg";
+
 import { SubscribeButton } from "../components/SubscribeButton";
 import { stripe } from "../services/stripe";
 
 import styles from "./home.module.scss";
-
-// clientSide
-// serverSide
-// staticSiteGeneration
 
 interface HomeProps {
   product: {
@@ -36,21 +36,23 @@ export default function Home({ product }: HomeProps) {
           <SubscribeButton priceId={product.priceId} />
         </section>
 
-        <img src="/images/avatar.svg" alt="Girl Coding" />
+        <Image src={AvatarImg} alt="Girl Coding" />
       </main>
     </>
   );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const price = await stripe.prices.retrieve("price_1J7Ag4D1qGuktUtGup8XsX1j");
+  const price = await stripe.prices.retrieve("price_1J7Ag4D1qGuktUtGup8XsX1j", {
+    expand: ["product"],
+  });
 
   const product = {
     priceId: price.id,
-    amount: new Intl.NumberFormat("en-us", {
+    amount: (price.unit_amount / 100).toLocaleString("en-US", {
       style: "currency",
       currency: "USD",
-    }).format(price.unit_amount / 100),
+    }),
   };
 
   return {

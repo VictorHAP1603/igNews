@@ -1,0 +1,16 @@
+getStaticProps == nao dinamico
+
+getServerSideProps == dinamico
+
+Requisições:
+
+-->Client-Side
+    -- Dados que não precisam de indexação, pode ser feita por requests normais
+
+-->Server-Side
+    -- Informações em tempo real, e precisa de indexação
+    -- A pagina do usuário logado
+
+-->Static Site Generation
+    -- Conteúdos que todos veem iguais, precisa de indexação
+    -- Um Post de um Blog
