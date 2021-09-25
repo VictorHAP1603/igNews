@@ -19,6 +19,9 @@
         margin-top: 1.5rem;
         display: block;
     }
+
+
+  
 }
 
 .postContent {
@@ -36,6 +39,35 @@
 
         li {
             margin: 0.5rem 0
+        }
+    }
+
+    &.previewContent {
+        background: linear-gradient( var(--gray-100), transparent);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;   
+    }
+}
+
+.continueReading {
+    padding: 2rem;
+    text-align: center;
+    background-color: var(--gray-850);
+    border-radius: 108px;
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin: 4rem 0 2rem;
+
+    transition: .4s;
+
+    a {
+        color: var(--yellow-500);
+        margin-left: 0.5rem;
+    }
+
+    &:hover {
+        a {
+            text-decoration: underline;
         }
     }
 }
