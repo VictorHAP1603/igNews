@@ -22,24 +22,24 @@ interface PostProps {
 export default function Posts({ posts }: PostProps) {
 
     return (
-        <>  
-        <Head>
-            <title>Posts | IgNews</title>
-        </Head>
+        <>
+            <Head>
+                <title>Posts | IgNews</title>
+            </Head>
 
-        <main className={styles.container}>
-            <div className={styles.posts}>
-                {posts.map((post, index) => (
-                    <Link href={`/posts/${post.slug}`} key={`${index}-${post.slug}`}>
-                        <a>
-                            <time>{post.updatedAt}</time>
-                            <strong>{post.title}</strong>
-                            <p>{post.excerpt}</p>
-                        </a>
-                    </Link>
-                )) }
-            </div>
-        </main>
+            <main className={styles.container}>
+                <div className={styles.posts}>
+                    {posts.map((post, index) => (
+                        <Link href={`/posts/${post.slug}`} key={`${index}-${post.slug}`}>
+                            <a>
+                                <time>{post.updatedAt}</time>
+                                <strong>{post.title}</strong>
+                                <p>{post.excerpt}</p>
+                            </a>
+                        </Link>
+                    ))}
+                </div>
+            </main>
 
         </>
     );
