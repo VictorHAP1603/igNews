@@ -28,7 +28,7 @@ export default function PostPreview({ post }: PostPreviewProps) {
       router.push(`/posts/${post.slug}`);
       return;
     }
-  }, [session]);
+  }, [session, router, post.slug]);
 
   if (!post) {
     return (
