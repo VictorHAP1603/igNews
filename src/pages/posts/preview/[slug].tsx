@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 import styles from '../post.module.scss';
 import { useEffect } from 'react';
-import { useRouter } from 'next/dist/client/router';
+import { useRouter } from 'next/router';
 
 interface PostPreviewProps {
   post: {
@@ -28,22 +28,45 @@ export default function PostPreview({ post }: PostPreviewProps) {
       router.push(`/posts/${post.slug}`);
       return;
     }
-  }, [session, router, post.slug]);
+  }, [session]);
+
+  if (!post) {
+    return (
+      <>
+        <Head>
+          <title>IgNews</title>
+        </Head>
+
+        <main className={styles.container}>
+          <article className={styles.post}>
+            <p className={styles.loading}>Carregando...</p>
+          </article>
+
+          <div className={styles.continueReading}>
+            Wanna continue reading?
+            <Link href="/">
+              <a>Subscribe Now 🤗</a>
+            </Link>
+          </div>
+        </main>
+      </>
+    )
+  }
 
   return (
     <>
       <Head>
-        <title>{post.title} | IgNews</title>
+        <title>{post?.title} | IgNews</title>
       </Head>
 
       <main className={styles.container}>
         <article className={styles.post}>
-          <h1>{post.title}</h1>
-          <time>{post.updatedAt}</time>
+          <h1>{post?.title}</h1>
+          <time>{post?.updatedAt}</time>
 
           <div
             className={`${styles.postContent} ${styles.previewContent}`}
-            dangerouslySetInnerHTML={{ __html: post.content }}
+            dangerouslySetInnerHTML={{ __html: post?.content }}
           />
         </article>
 
@@ -61,7 +84,7 @@ export default function PostPreview({ post }: PostPreviewProps) {
 export const getStaticPaths = () => {
   return {
     paths: [],
-    fallback: true,
+    fallback: 'blocking',
   };
 };
 
