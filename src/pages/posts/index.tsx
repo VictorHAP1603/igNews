@@ -4,7 +4,7 @@ import Prismic from '@prismicio/client'
 import { RichText } from 'prismic-dom';
 
 import Link from 'next/link';
-import Head from 'next/Head';
+import Head from 'next/head';
 
 import styles from './style.module.scss';
 
