@@ -1,4 +1,4 @@
-import Head from "next/Head";
+import Head from "next/head";
 import { GetServerSideProps } from "next"
 import { getSession } from "next-auth/client";
 import { getPrismicClient } from "../../services/prismic";

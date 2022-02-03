@@ -1,6 +1,6 @@
-import Head from 'next/Head';
-import { GetServerSideProps, GetStaticProps } from 'next';
-import { getSession, useSession } from 'next-auth/client';
+import Head from 'next/head';
+import { GetStaticProps } from 'next';
+import { useSession } from 'next-auth/client';
 import { getPrismicClient } from '../../../services/prismic';
 import { RichText } from 'prismic-dom';
 
