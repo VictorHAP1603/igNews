@@ -1,4 +1,4 @@
-#Projeto feito com o curso Ignite React JS
+# Projeto feito com o curso Ignite React JS
 
 Link: https://ig-news-rose.vercel.app/
 
